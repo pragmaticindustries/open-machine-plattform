@@ -41,6 +41,17 @@ module.exports = {
          */
         // '../../**/*.py'
     ],
+    safelist: [
+        'text-2xl',
+        'text-3xl',
+        {
+            pattern: /bg-(red|green|blue)-(100|200|300)/,
+            variants: ['lg', 'hover', 'focus', 'lg:hover'],
+        },
+        {
+            pattern: /text-(red|green|blue)-(100|200|300)/
+        },
+    ],
     theme: {
         extend: {},
     },
@@ -51,7 +62,7 @@ module.exports = {
          * comment the line below to disable '@tailwindcss/forms'.
          */
         // TODO JF: do we need that?
-        // require('@tailwindcss/forms'),
+        require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
