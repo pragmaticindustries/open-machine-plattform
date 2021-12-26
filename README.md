@@ -1,2 +1,3 @@
-# open-machinery-plattform
-Open Source Plattform for Business Cases on Machine Data
+# Open Machinery Plattform (OMAP)
+
+Open Source Plattform for Business Cases on Machine Data.
