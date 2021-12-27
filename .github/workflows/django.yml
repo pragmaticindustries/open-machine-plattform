@@ -31,3 +31,7 @@ jobs:
     - name: Run Tests
       run: |
         pytest
+    # Build Docu
+    - name: Sphinx Build
+      uses: ammaraskar/sphinx-action@0.4
+
