@@ -1,4 +1,5 @@
 tox
 pytest
+pytest-django
 black
 flake8
