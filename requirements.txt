@@ -1,3 +1,0 @@
-tox
-pytest
-requests~=2.26.0

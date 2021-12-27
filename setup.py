@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-# from omap import __version__
-
-
 try:
     from setuptools import find_packages, setup
 except ImportError:
@@ -14,9 +11,20 @@ except ImportError:
 # (see http://www.eby-sarna.com/pipermail/peak/2010-May/003357.html)
 try:
     import multiprocessing  # noqa
+
 except ImportError:
     pass
 
+
+# See https://stackoverflow.com/a/24517154
+from distutils.util import convert_path
+
+main_ns = {}
+ver_path = convert_path("omap/__init__.py")
+with open(ver_path) as ver_file:
+    exec(ver_file.read(), main_ns)
+
+__version__ = main_ns["__version__"]
 
 install_requires = [
     "Django>=3.0,<3.3",
@@ -79,55 +87,48 @@ testing_extras = [
 documentation_extras = [
     # 'pyenchant>=3.1.1,<4',
     # 'sphinxcontrib-spelling>=5.4.0,<6',
-    'Sphinx>=1.5.2',
+    "Sphinx>=1.5.2",
     # 'sphinx-autobuild>=0.6.0',
     # 'sphinx-wagtail-theme==5.0.4',
     # 'recommonmark>=0.7.1',
 ]
 
 setup(
-    name='omap',
-    version="2.0.0",
-    description='Open Machinery Plattform',
-    author='pragmatic industries GmbH + contributors',
-    author_email='info@pragmticindustries.de',  # For support queries, please see https://docs.wagtail.io/en/stable/support.html
-    url='https://pragmaticindustries.de/',
+    name="omap",
+    version=__version__,
+    description="Open Machinery Plattform",
+    author="pragmatic industries GmbH + contributors",
+    author_email="info@pragmticindustries.de",  # For support queries, please see https://docs.wagtail.io/en/stable/support.html
+    url="https://pragmaticindustries.de/",
     packages=find_packages(),
     include_package_data=True,
-    license='Apache 2.0',
-    long_description="Wagtail is an open source content management \
-system built on Django, with a strong community and commercial support. \
-It’s focused on user experience, and offers precise control for \
-designers and developers.\n\n\
-For more details, see https://wagtail.io, https://docs.wagtail.io and \
-https://github.com/wagtail/wagtail/.",
+    license="Apache 2.0",
+    long_description="Open Machinery Platform (short OMAP) is an open source \
+platform to manage machines / assets and use their data.",
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'Framework :: Django',
-        'Framework :: Django :: 3.0',
-        'Framework :: Django :: 3.1',
-        'Framework :: Django :: 3.2',
+        "Development Status :: 3 - Alpha",
+        "Environment :: Web Environment",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Framework :: Django",
+        "Framework :: Django :: 3.0",
+        "Framework :: Django :: 3.1",
+        "Framework :: Django :: 3.2",
     ],
-    python_requires='>=3.7',
+    python_requires=">=3.7",
     install_requires=install_requires,
-    extras_require={
-        'testing': testing_extras,
-        'docs': documentation_extras
-    },
-    entry_points="""
-            [console_scripts]
-            wagtail=wagtail.bin.wagtail:main
-    """,
+    extras_require={"testing": testing_extras, "docs": documentation_extras},
+    # entry_points="""
+    #         [console_scripts]
+    #         wagtail=wagtail.bin.wagtail:main
+    # """,
     zip_safe=False,
     # cmdclass={
     #     'sdist': sdist,

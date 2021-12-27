@@ -8,23 +8,59 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('assets', '0001_initial'),
+        ("assets", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='RelationType',
+            name="RelationType",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='AssetRelation',
+            name="AssetRelation",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('child', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, related_name='parent_relations', to='assets.simpleasset')),
-                ('parent', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, related_name='children_relations', to='assets.simpleasset')),
-                ('relation_type', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='assets.relationtype')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
+                (
+                    "child",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.RESTRICT,
+                        related_name="parent_relations",
+                        to="assets.simpleasset",
+                    ),
+                ),
+                (
+                    "parent",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.RESTRICT,
+                        related_name="children_relations",
+                        to="assets.simpleasset",
+                    ),
+                ),
+                (
+                    "relation_type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.RESTRICT,
+                        to="assets.relationtype",
+                    ),
+                ),
             ],
         ),
     ]
