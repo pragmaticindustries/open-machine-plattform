@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "omap"
+project = "Open MAchine Platform"
 copyright = "2021, pragmatic industries GmbH + contributors"
 author = "pragmatic industries GmbH + contributors"
 
