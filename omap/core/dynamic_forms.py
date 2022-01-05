@@ -1,3 +1,4 @@
+import logging
 from enum import Enum
 from inspect import signature
 
@@ -84,21 +85,23 @@ class DynamicFieldsMixin(object):
             raise ValueError("The field for the additional properties is available as FormField which is not allowed")
 
         # Add fields
-        self.config = self.get_config()
+        self.config = self.get_config(kwargs.get("instance", None))
 
         for field in self.config:
+            print(f"Adding dynamic field '{field.name}'")
             self.fields[field.name] = udf_to_forms_field(field)
 
         # If an instance is given, add initial
         if "instance" in kwargs:
             instance = kwargs["instance"]
 
-            for field in self.config:
-                initial_value = getattr(instance, self.add_prop_field)
-                if field.name in initial_value:
-                    self.initial[field.name] = initial_value[field.name]
+            if instance is not None:
+                for field in self.config:
+                    initial_value = getattr(instance, self.add_prop_field)
+                    if field.name in initial_value:
+                        self.initial[field.name] = initial_value[field.name]
 
-    def get_config(self):
+    def get_config(self, instance=None):
         if type(self.add_prop_config) == list:
             config = self.add_prop_config
         elif callable(self.add_prop_config):
@@ -106,12 +109,14 @@ class DynamicFieldsMixin(object):
 
             # Check if an unknown parameter exists
             for n, _ in sig.parameters.items():
-                if n not in {"model"}:
+                if n not in {"model", "instance"}:
                     raise ValueError(f"Unknown Parameter '{n}' in callable function")
 
             kwargs = {}
             if "model" in sig.parameters:
                 kwargs["model"] = self._meta.model
+            if "instance" in sig.parameters:
+                kwargs["instance"] = instance
 
             config = self.add_prop_config(**kwargs)
 

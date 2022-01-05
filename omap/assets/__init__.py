@@ -1,3 +1,0 @@
-"""
-Base Classes for Assets
-"""

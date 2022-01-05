@@ -1,0 +1,27 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <title>{% block title %}Open Machinery Plattform{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% block head %}{% endblock %}
+        {% tailwind_css %}
+	</head>
+
+	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+        {% block body %}
+            <form method="POST" enctype="multipart/form-data">
+
+                <!-- Security token -->
+                {% csrf_token %}
+
+                <!-- Using the formset -->
+                {{ form }}
+
+                <input type="submit" value="Submit">
+            </form>
+        {% endblock %}
+	</body>
+</html>

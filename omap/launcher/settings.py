@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "tailwind",
     "omap.core",
-    "omap.assets",
 ]
 
 MIDDLEWARE = [
