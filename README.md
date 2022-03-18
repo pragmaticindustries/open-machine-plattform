@@ -8,3 +8,23 @@ Speaking of roles, we usually distinguish between **Machine Manufacturers**, i.e
 The *OMAP* project aims especially at pushing the cooperation of all involved parties over machine data to build ecosystems that lead to a gain for all involved parties.
 
 Documentation can be found on [readthedocs](https://omap.readthedocs.io/en/latest/).
+
+## Start the OMAP
+
+OMAP relies on a module system which extends Django Apps.
+Just start it with the omap.py script (which is pretty similar to manage.py).
+
+```
+python omap.py runserver
+```
+or
+```
+./omap.py runserver
+```
+
+After this start it behaves exactly like a regular django project.
+So migrations can e.g. be done via
+```
+./omap.py migrate
+```
+etc...

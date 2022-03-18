@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 !omap/theme/static/css/dist/
+/.idea/
