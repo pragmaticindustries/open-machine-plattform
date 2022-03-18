@@ -5,10 +5,10 @@ help:
 
 install:
 	# Install npm for theme
-	cd omap/core/static_src && npm install
+	cd omap/frontend/static_src && npm install
 
 frontend:
-	cd omap/core/static_src && npm run build
+	cd omap/frontend/static_src && npm run build
 
 dev_server:
-	cd omap/core/static_src && npm run start
+	cd omap/frontend/static_src && npm run start
