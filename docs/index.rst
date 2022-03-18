@@ -17,11 +17,14 @@ Speaking of roles, we usually distinguish between **Machine Manufacturers**, i.e
 
 The *OMAP* project aims especially at pushing the cooperation of all involved parties over machine data to build ecosystems that lead to a gain for all involved parties.
 
+.. note:: This documentation is currently being actively developed and may not be complete as of yet. For any questions please open an issue on our `GitHub page <https://github.com/pragmaticindustries/open-machine-plattform>`_.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    quickstart
+   architecture
    developers
    faq
 
