@@ -38,14 +38,14 @@ class PortalModule(object):
     """
 
     def __init__(
-            self,
-            module_name,
-            module_version,
-            django_apps,
-            module_dependencies: Optional[List[str]] = None,
-            settings_entries: Optional[Dict] = None,
-            constance_config: Optional[Dict] = None,
-            pip_dependencies=None,
+        self,
+        module_name,
+        module_version,
+        django_apps,
+        module_dependencies: Optional[List[str]] = None,
+        settings_entries: Optional[Dict] = None,
+        constance_config: Optional[Dict] = None,
+        pip_dependencies=None,
     ) -> None:
         self.module_name = module_name
         self.module_version = module_version
@@ -189,7 +189,7 @@ def install_modules(modules: Iterable[PortalModule]):
 def configure_modules():
     """
     This is the central hook.
-    It loads the name(s) of the Modules to load from the env variable PORTAL_MODULES,
+    It loads the name(s) of the Modules to load from the env variable OMAP_MODULES,
     resolves them and then configures django accordingly.
     So this is a somewhat "improved" version of the ``django.setup()`` function but serves the same purpose
     """
@@ -238,9 +238,11 @@ def configure_modules():
                 base_settings[setting] = setting_value
 
     # We have to be careful with the merge especially with INSTALLED_APPS
-    merged_apps = base_settings.get("INSTALLED_APPS", []) + additional_settings.get(
-        "INSTALLED_APPS", []
-    ) + list(apps)
+    merged_apps = (
+        base_settings.get("INSTALLED_APPS", [])
+        + additional_settings.get("INSTALLED_APPS", [])
+        + list(apps)
+    )
     # Same goes with CONSTANCE Config
     merged_constance = {**base_settings.get("CONSTANCE_CONFIG", {}), **constance_config}
 
@@ -274,12 +276,12 @@ def get_resolved_modules(module_names=None):
         modules = module_names
     else:
         # Read from ENV Variable
-        modules = os.getenv("PORTAL_MODULES")
+        modules = os.getenv("OMAP_MODULES")
 
     if not modules:
         # TODO do we need this?
         # raise RuntimeError(
-        #     "No Modules given, please set the module to env varibale PORTAL_MODULES"
+        #     "No Modules given, please set the module to env varibale OMAP_MODULES"
         # )
         return []
     module_list = modules.split(",")
