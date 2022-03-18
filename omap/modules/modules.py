@@ -32,7 +32,7 @@ class ModuleConfig:
     pass
 
 
-class PortalModule(object):
+class OmapModule(object):
     """
     Very simple implementation of all properties of a "Module"
     """
@@ -112,7 +112,7 @@ def collect_registry(module_locations: List[str]):
                 )
 
             # Create Portal Module class from it
-            module_configs[module_dict["module_name"]] = PortalModule(**module_dict)
+            module_configs[module_dict["module_name"]] = OmapModule(**module_dict)
 
     return module_configs
 
@@ -122,7 +122,7 @@ def collect_registry(module_locations: List[str]):
 modules_registry = collect_registry(MODULE_LOCATIONS)
 
 
-def resolve(modules: Union[str, List[str]]) -> Iterable[PortalModule]:
+def resolve(modules: Union[str, List[str]]) -> Iterable[OmapModule]:
     """
     This method takes one or more module names and looks up the modules in the registry above.
     Then it checks if the modules have dependencies on other moduels and if so, adds them to the "context" as well.
@@ -143,7 +143,7 @@ def resolve(modules: Union[str, List[str]]) -> Iterable[PortalModule]:
             unresolved.remove(module_name)
             continue
         logging.info(f"Resolving {module_name}")
-        module: PortalModule = modules_registry.get(module_name)
+        module: OmapModule = modules_registry.get(module_name)
         if not module:
             raise RuntimeError(f"Unresolvable Module {module_name}")
         resolved.append(module)
@@ -158,7 +158,7 @@ def resolve(modules: Union[str, List[str]]) -> Iterable[PortalModule]:
     return resolved
 
 
-def install_modules(modules: Iterable[PortalModule]):
+def install_modules(modules: Iterable[OmapModule]):
     def install(package):
         import subprocess
 
@@ -166,7 +166,7 @@ def install_modules(modules: Iterable[PortalModule]):
 
     logging.info("Check if there are module dependencies to install...")
     for module in modules:
-        module: PortalModule
+        module: OmapModule
         logging.info(f"Checking Module {module.module_name}:{module.module_version}")
         if module.pip_dependencies:
             logging.info(
@@ -214,7 +214,7 @@ def configure_modules():
     install_modules(modules)
 
     for module in modules:
-        module: PortalModule
+        module: OmapModule
         apps.update(module.django_apps)
         if module.settings_entries:
             additional_settings.update(module.settings_entries)
