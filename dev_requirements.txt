@@ -3,3 +3,4 @@ pytest
 pytest-django
 black
 flake8
+pre-commit==2.9.3
