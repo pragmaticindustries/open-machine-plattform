@@ -1,0 +1,17 @@
+[flake8]
+ignore =
+    E402,
+    E203,
+    W503
+max-line-length = 300
+exclude =
+    .git,
+    test*.py,
+    tools/*
+extend-exclude =
+    dist,
+    build,
+    venv
+show-source = True
+statistics = True
+format = %(path)s:%(row)d,%(col)d:%(code)s:%(text)s:https://lintlyci.github.io/Flake8Rules/rules/%(code)s.html
