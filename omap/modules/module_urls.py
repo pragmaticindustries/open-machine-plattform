@@ -8,6 +8,9 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
+from omap.modules import modules
+from omap.modules.modules import ModuleConfig
+
 
 def dynamic_url():
     _urlpatterns = [url(r"admin/", admin.site.urls)] + (
@@ -37,6 +40,16 @@ def dynamic_url():
             )
             # Do the include
             _urlpatterns.append(path(config.url_prefix + "/", include(urls_path)))
+
+    # Now add urls from Modules
+    for mod in modules.modules():
+        mod: ModuleConfig
+        if mod.urlpatterns:
+            if callable(mod.urlpatterns):
+                patterns = mod.urlpatterns()
+            else:
+                patterns = mod.urlpatterns
+            _urlpatterns.extend(patterns)
 
     logging.debug(f"Patterns: {_urlpatterns}")
 

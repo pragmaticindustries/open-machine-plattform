@@ -46,6 +46,7 @@ class OmapModule(object):
         settings_entries: Optional[Dict] = None,
         constance_config: Optional[Dict] = None,
         pip_dependencies=None,
+        urlpatterns=None,
     ) -> None:
         self.module_name = module_name
         self.module_version = module_version
@@ -54,6 +55,7 @@ class OmapModule(object):
         self.settings_entries = settings_entries
         self.constance_config = constance_config
         self.pip_dependencies = pip_dependencies
+        self.urlpatterns = urlpatterns
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -92,6 +94,7 @@ def collect_registry(module_locations: List[str]):
                 "module_dependencies": [],
                 "settings_entries": {},
                 "constance_config": {},
+                "urlpatterns": None,
             }
 
             module_dict = {}
