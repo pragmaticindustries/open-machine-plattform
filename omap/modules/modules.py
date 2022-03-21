@@ -253,6 +253,9 @@ def configure_modules():
     merged.update({"INSTALLED_APPS": merged_apps})
     merged.update({"CONSTANCE_CONFIG": merged_constance})
 
+    # TEST for dynamic urls
+    merged.update({"ROOT_URLCONF": "omap.modules.module_urls"})
+
     settings.configure(**merged)
 
     # Now modify the INSTALLED_APPS for all apps that contain a urls.py file

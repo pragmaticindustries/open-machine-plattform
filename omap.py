@@ -8,7 +8,7 @@ from omap.modules import modules
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "omap.launcher.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "omap.modules.base_settings")
     # Here we set the OMAP_MODULES env varible, if not set
     os.environ.setdefault("OMAP_MODULES", "")
 
