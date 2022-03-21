@@ -130,3 +130,6 @@ dmypy.json
 
 !omap/theme/static/css/dist/
 /.idea/
+
+# Generated / Compiled  Frontend parts
+/omap/frontend/static/css/dist
