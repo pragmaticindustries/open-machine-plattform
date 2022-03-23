@@ -33,4 +33,7 @@ There is even to possibility to share an asset between separate :ref:`Organizati
 Customer Management
 -------------------
 
+The third crucial component of the OMAP is the management of customers. In many situations emploees of the customers are also users (thats what the platform is for!).
+
+
 .. include:: e2e.rst
