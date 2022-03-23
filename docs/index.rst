@@ -25,6 +25,7 @@ The *OMAP* project aims especially at pushing the cooperation of all involved pa
 
    quickstart
    architecture
+   features/features
    developers
    faq
 
