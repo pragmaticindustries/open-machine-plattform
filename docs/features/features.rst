@@ -37,3 +37,4 @@ The third crucial component of the OMAP is the management of customers. In many 
 
 
 .. include:: e2e.rst
+.. include:: messaging.rst
