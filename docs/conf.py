@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "Open MAchine Platform"
-copyright = "2021, pragmatic industries GmbH + contributors"
+copyright = "2021-2022, pragmatic industries GmbH + contributors"
 author = "pragmatic industries GmbH + contributors"
 
 
