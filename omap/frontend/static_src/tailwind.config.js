@@ -39,18 +39,18 @@ module.exports = {
          * Python: If you use Tailwind CSS classes in Python, uncomment the following line
          * and make sure the pattern below matches your project structure.
          */
-        // '../../**/*.py'
+        '../../**/*.py'
     ],
     safelist: [
-        'text-2xl',
-        'text-3xl',
-        {
-            pattern: /bg-(red|green|blue)-(100|200|300)/,
-            variants: ['lg', 'hover', 'focus', 'lg:hover'],
-        },
-        {
-            pattern: /text-(red|green|blue)-(100|200|300)/
-        },
+        // 'text-2xl',
+        // 'text-3xl',
+        // {
+        //     pattern: /bg-(red|green|blue)-(100|200|300)/,
+        //     variants: ['lg', 'hover', 'focus', 'lg:hover'],
+        // },
+        // {
+        //     pattern: /text-(red|green|blue)-(100|200|300)/
+        // },
     ],
     theme: {
         extend: {},

@@ -1,0 +1,72 @@
+{% extends 'portal_core/base_nav.html' %}
+{% load bootstrap4 %}
+{% load django_tables2 %}
+{% load static %}
+{% load bootstrap_modal %}
+
+{% block js %}
+    <script src="{% static 'js/lib/apexcharts/dist/apexcharts.min.js' %}"></script>
+    <script src="{% static 'junk_core/js/application.js' %}"></script>
+{% endblock %}
+
+{% block content_body %}
+    <turbo-frame id="content">
+        <turbo-frame id="form">
+            <div data-controller="turbo-186-workaround">
+
+                <div id="bigcard">
+                    <div class="bigcard_head">
+                        {% block head %}{% endblock %}
+                    </div>
+
+                    <div id="Service" class="bigcard_margin">
+                        <div class="flex flex-col gap-2">
+                            <form action="{{ target }}" method="get" class="form form-inline gap-2">
+                                {% csrf_token %}
+
+                                {% bootstrap_form filter.form layout='inline' %}
+                                <input class="btn border rounded border-gray-300 text-gray-400 w-28 text-top text-xs"
+                                       type="submit" name="select" value="Anwenden"/>
+                                {% url 'export_view' as export %}
+                                <a {% open_modal url=export title="Export" %}
+                                        class="btn border rounded border-gray-300 text-gray-400 w-28 text-top text-xs"
+                                        target="_blank" href="#" data-turbo-frame="_top">Export</a>
+                                <!-- <a class="btn border rounded border-gray-300 text-gray-400 w-28 text-top text-xs" target="_blank"  href="{% url 'export_view' %}" data-turbo-frame="_top">Export</a> -->
+                            </form>
+                            <form action="{{ target }}" method="get" class="form form-inline gap-2">
+                                <p class="text-top text-xs">Schnellauswahl: </p>
+                                <input class="btn  rounded {% if selection == 'Tag' %} bg-green-400 text-white {% else %} text-green-400 {% endif %} border-green-300 w-28 text-top text-xs"
+                                       type="submit" name="select" value="Tag"/>
+                                <input class="btn  rounded {% if selection == 'Woche' %} bg-green-400 text-white {% else %} text-green-400 {% endif %} border-green-300 w-28 text-top text-xs"
+                                       type="submit" name="select" value="Woche"/>
+                                <input class="btn  rounded {% if selection == 'Monat' %} bg-green-400 text-white {% else %} text-green-400 {% endif %} border-green-300 w-28 text-top text-xs"
+                                       type="submit" name="select" value="Monat"/>
+                                <input class="btn  rounded {% if selection == 'Jahr' %} bg-green-400 text-white {% else %} text-green-400 {% endif %} border-green-300 w-28 text-top text-xs"
+                                       type="submit" name="select" value="Jahr"/>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap">
+                        {% for q in panels %}
+
+                            <figure id="ticket" style="margin: 20px" class="mb-4">
+                                <div id="cards_head">
+                                    {% block card_head %}{% endblock %}
+                                </div>
+                                <div style="transform: rotate(0)" class="dash_card_size -white">
+                                    {% block card_content %}{% endblock %}
+                                </div>
+                            </figure>
+                        {% endfor %}
+                    </div>
+
+
+                    <div>
+                        {% block footer %}{% endblock %}
+                    </div>
+
+                </div>
+            </div>
+        </turbo-frame>
+    </turbo-frame>
+{% endblock %}

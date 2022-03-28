@@ -1,17 +1,86 @@
-{% load static tailwind_tags %}
+{% load tailwind_tags %}
+{% load cache %}
+{% load portal_theme_tags %}
+{% load i18n %}
+{% load bootstrap_modal static i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-        <title>{% block title %}Open Machinery Plattform{% endblock %}</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        {% block head %}{% endblock %}
-        {% tailwind_css %}
-	</head>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>{{ title }}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'omap/frontend/favicon.ico' %}"/>
+    {% include 'omap/frontend/head.html' %}
 
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
-        {% block body %}
-        {% endblock %}
-	</body>
+    {% block js %}{% endblock %}
+
+    {% tailwind_css %}
+
+    <style>
+        {%  if not blank_screen %}
+            {% cache 300 base_background_image %}
+                body {
+                {% load thumbnail %}
+                {% thumbnail config.BACKGROUND_IMAGE "1980x1280" as im %}
+                    background-image: url("{{ im.url | safe }}");
+                {% endthumbnail %}
+                    background-attachment: fixed;
+                    background-size: 100%;
+                }
+            {% endcache %}
+        {%  endif %}
+
+        {% cache 300 base_css %}
+            :root {
+                --prime: {{ config.COLOR_PRIMARY }};
+                --second: {{ config.COLOR_SECONDARY }};
+                --success: #7bba48;
+                --fail: #ED6948;
+                --dark: #000000;
+                --light: #ffffff;
+                --hover: #A4A6A8;
+                --footer: #FAFBFC;
+                --header: #FAFBFC;
+                --new: #0BA9C5;
+                --shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+
+                --iphone: 428px;
+                --ipad: 1112px,
+            }
+        {% endcache %}
+    </style>
+</head>
+<body>
+{% modalform %}
+    <div id="base" class="h-full">
+        {% if not blank_screen %}
+            {% include "omap/frontend/top_bar.html" %}
+        {% endif %}
+        <!-- Needs to be here for Turbolinks -->
+
+        <div class="block_content_size h-full">
+            {% block content %}
+                {% if sections %}
+                    {% include 'omap/frontend/sections.html' %}
+                {% else %}
+                    <div id="content_body" class="bg-blue-400 h-full">
+                        {% block content_body %}
+                        {% endblock %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% modal %}
+        <turbo-frame id="form" data-modalform-target="frame">
+            {% include 'omap/frontend/empty_modal.html' %}
+        </turbo-frame>
+    {% endmodal %}
+{% endmodalform %}
+</body>
 </html>

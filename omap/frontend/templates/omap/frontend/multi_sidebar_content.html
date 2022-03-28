@@ -1,0 +1,61 @@
+{% extends base_template|default:"portal_theme/base.html" %}
+{% load bootstrap_modal %}
+{% load static bootstrap_modal %}
+
+{% block content %}
+    <div data-controller="turbovisit">
+        <div id="sidebar_content">
+            <div class="w-1/4 h-screen overflow-auto fixed">
+                {% for section in sections %}
+                    <div id="bigcard" class="flex flex-col">
+                        <div style="transform: rotate(0);" class="bigcard_head text-top -padding">
+                            {% if section.top_link_modal %}
+                                <a role="button" class="hover:text-gray-400" {% open_modal url=section.top_link_modal|default:"" %}>
+                                    {{ section.top_text|default:"" }}<i
+                                        class="fas fa-chevron-right stretched-link pl-2"></i></a>
+                            {% elif section.top_link %}
+                                <a href="{{ section.top_link|default:" #" }}" class="hover:text-gray-400" data-turbo-frame="content">
+                                    {{ section.top_text|default:"" }}<i
+                                        class="fas fa-chevron-right stretched-link pl-2"></i></a>
+                            {% else %}
+                                {{ section.top_text|default:"" }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="bigcard_table mr-10" style="max-height:85%;">
+                        {% for entry in section.entries %}
+                            {% if section.top_link_modal %}
+                                <div style="transform: rotate(0);"
+                                    class="entry -padding {% if entry.id == section.selected_id %}active{% endif %}">
+                                    <a class="stretched-link" href="" {% open_modal url=entry.link %}>
+                                        {{ entry.text|truncatechars:20 }}</a>
+                                </div>
+                            {% else %}
+                                <div style="transform: rotate(0);"class="entry -padding {% if entry.id == section.selected_id %}active{% endif %}">
+                                    <a class="stretched-link" href="{{ entry.link }}" data-turbo-frame="content"
+                                   data-url="{{ entry.external_link }}">
+                                    {{ entry.text|truncatechars:20 }}</a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div style="margin-left: 25%;" class="w-3/4 h-100">
+                <turbo-frame id="content"
+                             src="{% if selected %}{{ selected }}{% else %}{{ default_content|default:"" }}{% endif %}">
+                </turbo-frame>
+            </div>
+        </div>
+
+        <script>
+
+            $('.entry').click(function () {
+                $(this).addClass('active').siblings().removeClass('active')
+            })
+            $('.bigcard_head').click(function () {
+                $('.entry').removeClass('active')
+            })
+        </script>
+    </div>
+{% endblock %}

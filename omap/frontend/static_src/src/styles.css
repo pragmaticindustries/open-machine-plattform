@@ -1,7 +1,0 @@
-@import "test.css";
-@import "test2.scss";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-

@@ -1,0 +1,27 @@
+<div id="sidebar_content" class="w-full">
+    <div class="w-1/4 h-screen mt-4">
+        {% block sidebar %}
+            {% include 'omap/frontend/sidebar.html' %}
+        {% endblock %}
+    </div>
+    <div class="w-3/4 h-100 ml-4 mt-4">
+        {% block inner_content %}
+            {% block content_head %}
+                <div id="bigcard">
+                    <div class="bigcard_head">
+                        <div class="text-top -padding">
+                            {% block content_head_left %}
+                            {% endblock %}
+                        </div>
+                        {% block content_head_right %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+            <div id="content_body">
+                {% block content_body %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+</div>
