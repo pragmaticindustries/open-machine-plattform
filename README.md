@@ -28,3 +28,17 @@ So migrations can e.g. be done via
 ./omap.py migrate
 ```
 etc...
+
+## Run Docker
+
+To run the application in docker, run the following:
+```
+docker pull pragmaticindustriesgmbh/open-machine-platform
+docker run -p 8000:8000 ragmaticindustriesgmbh/open-machine-platform
+```
+## Build Docker
+
+If you want to build and run the docker image yourself, you can do so by running:
+```
+docker build -t pragmaticindustriesgmbh/open-machine-platform:latest . && docker run -p 8000:8000 pragmaticindustriesgmbh/open-machine-platform:latest
+```
