@@ -52,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+ROOT_URLCONF = "omap.modules.module_urls"
 
 TEMPLATES = [
     {
@@ -68,7 +69,8 @@ TEMPLATES = [
         },
     },
 ]
-
+WSGI_APPLICATION = "omap.modules.wsgi.application"
+ASGI_APPLICATION = "sockpuppet.routing.application"
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
