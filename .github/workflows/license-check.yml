@@ -1,7 +1,7 @@
 on: push
 jobs:
-  license_check:
-    runs-on: ubuntu-20.04
+  license_check_pip:
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout the code
       uses: actions/checkout@v2.3.4
@@ -25,3 +25,20 @@ jobs:
     - name: Print report
       if: ${{ always() }}
       run: echo "${{ steps.license_check_report.outputs.report }}"
+  license_check_npm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 12.x
+      - name: Switch to frontend
+        run: cd omap/frontend/static_src
+      - name: Run npm install
+        run: npm install
+      - name: Check licenses
+        uses: tangro/actions-license-check@v1.0.7
+        with:
+          allowed-licenses: 'MIT; ISC; Apache-2.0; BSD'
