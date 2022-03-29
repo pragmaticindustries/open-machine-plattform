@@ -42,15 +42,5 @@ jobs:
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_TOKEN }}" >> ~/.npmrc
       - name: Run npm install
         run: npm install
-      - name: Set path env
-        run: |
-          echo WORKDIR=$(pwd) >> $GITHUB_ENV
-      - name: Test path env
-        run: echo $WORKDIR
-      - name: Check licenses
-        uses: NiklasMerz/actions-license-check@cwd
-        with:
-          allowed-licenses: 'MIT; ISC; Apache-2.0; BSD'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+      - name: Run roboter
+        run: npx roboter license
