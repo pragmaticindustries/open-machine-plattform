@@ -13,7 +13,7 @@ jobs:
         python-version: '3.8'
     - name: Get explicit and transitive dependencies
       run: |
-        pip install -r requirements.txt
+        pip install -r prod_requirements.txt
         pip freeze > requirements-all.txt
     - name: Check python
       id: license_check_report
