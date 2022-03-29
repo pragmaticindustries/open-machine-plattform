@@ -42,7 +42,7 @@ jobs:
       - name: Run npm install
         run: npm install
       - name: Test env
-        run: echo $GITHUB_WORKSPACE
+        run: pwd
       - name: Check licenses
         uses: tangro/actions-license-check@v1.0.7
         with:
