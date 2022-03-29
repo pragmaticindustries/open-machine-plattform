@@ -43,9 +43,9 @@ jobs:
         run: npm install
       - name: Set path env
         run: |
-          RUNNER_WORKSPACE=$(pwd) >> $GITHUB_ENV
+          echo RUNNER_WORKSPACE=$(pwd) >> $GITHUB_ENV
       - name: Test path env
-        run: cat $GITHUB_ENV
+        run: echo $RUNNER_WORKSPACE
       - name: Check licenses
         uses: tangro/actions-license-check@v1.0.7
         with:
