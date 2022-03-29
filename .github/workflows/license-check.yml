@@ -41,8 +41,10 @@ jobs:
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_TOKEN }}" >> ~/.npmrc
       - name: Run npm install
         run: npm install
+      - name: Test env
+        run: export RUNNER_WORKSPACE=$(pwd)
       - name: Check licenses
-        uses: NiklasMerz/actions-license-check@cwd
+        uses: tangro/actions-license-check@v1.0.7
         with:
           allowed-licenses: 'MIT; ISC; Apache-2.0; BSD'
         env:
