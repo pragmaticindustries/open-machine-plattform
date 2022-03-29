@@ -41,8 +41,11 @@ jobs:
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_TOKEN }}" >> ~/.npmrc
       - name: Run npm install
         run: npm install
-      - name: Test env
-        run: export RUNNER_WORKSPACE=$(pwd)
+      - name: Set path env
+        run: |
+          RUNNER_WORKSPACE=$(pwd) >> $GITHUB_ENV
+      - name: Test path env
+        run: cat $GITHUB_ENV
       - name: Check licenses
         uses: tangro/actions-license-check@v1.0.7
         with:
