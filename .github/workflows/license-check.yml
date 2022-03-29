@@ -27,6 +27,9 @@ jobs:
       run: echo "${{ steps.license_check_report.outputs.report }}"
   license_check_npm:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: omap/frontend/static_src
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v2
@@ -36,8 +39,6 @@ jobs:
           node-version: 12.x
       - name: Authenticate with GitHub package registry
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_TOKEN }}" >> ~/.npmrc
-      - name: Switch to frontend
-        run: cd omap/frontend/static_src
       - name: Run npm install
         run: npm install
       - name: Check licenses
