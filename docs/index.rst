@@ -27,6 +27,7 @@ The *OMAP* project aims especially at pushing the cooperation of all involved pa
    architecture
    features/features
    developers
+   mqtt
    faq
 
 .. Probably add that later?
