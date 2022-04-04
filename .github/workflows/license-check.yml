@@ -20,7 +20,7 @@ jobs:
       uses: pilosus/action-pip-license-checker@v0.5.0
       with:
         requirements: 'requirements-all.txt'
-        fail: 'Copyleft,Error,Other'
+        fail: 'StrongCopyleft,NetworkCopyleft,Error,Other'
         exclude: 'pylint.*|text-unidecode.*'
     - name: Print report
       if: ${{ always() }}
