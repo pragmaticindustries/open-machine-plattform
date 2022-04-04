@@ -21,7 +21,7 @@ jobs:
       with:
         requirements: 'requirements-all.txt'
         fail: 'Copyleft,Error,Other'
-        exclude: 'pylint.*'
+        exclude: 'pylint.*|text-unidecode.*'
     - name: Print report
       if: ${{ always() }}
       run: echo "${{ steps.license_check_report.outputs.report }}"
