@@ -14,7 +14,6 @@ import inspect
 import logging
 import os
 import sys
-from pathlib import Path
 from typing import Dict, Optional, List, Set, Union, Iterable
 
 logger = logging.getLogger("modules")
@@ -56,7 +55,7 @@ class OmapModule(object):
         self.pip_dependencies = pip_dependencies
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 def collect_registry(module_locations: List[str]):
@@ -197,9 +196,12 @@ def configure_modules():
     # Add them to the "installed" modules
 
     logging.basicConfig(level="INFO")
-    # Manipulate classpath
-    sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
-    sys.path.insert(0, os.path.join(BASE_DIR, "packages/portal_theme"))
+
+    from django.conf import settings
+
+    if settings.configured:
+        logging.info("Settings already configured, skipping...")
+        return
 
     modules = get_resolved_modules()
 
@@ -231,7 +233,9 @@ def configure_modules():
     base_settings = {}
     if os.getenv("DJANGO_SETTINGS_MODULE"):
         # We can use a base settings file
-        mod = importlib.import_module(os.getenv("DJANGO_SETTINGS_MODULE"))
+        settings_module = os.getenv("DJANGO_SETTINGS_MODULE")
+        logging.info(f"Using '{settings_module}' as base settings")
+        mod = importlib.import_module(settings_module)
         for setting in dir(mod):
             if setting.isupper():
                 setting_value = getattr(mod, setting)
@@ -254,7 +258,7 @@ def configure_modules():
     merged.update({"CONSTANCE_CONFIG": merged_constance})
 
     # TEST for dynamic urls
-    merged.update({"ROOT_URLCONF": "omap.modules.module_urls"})
+    # merged.update({"ROOT_URLCONF": "omap.modules.module_urls"})
 
     settings.configure(**merged)
 

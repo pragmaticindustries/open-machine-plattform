@@ -1,8 +1,9 @@
-from django.conf.urls import url
+from django.urls import path
 
-from omap.core import views
+from omap.assets import views
 
 app_name = "assets"
+
 urlpatterns = [
-    url("", views.demo),
+    path("", views.demo, name="assets/home"),
 ]

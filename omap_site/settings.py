@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -41,6 +41,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # OMAP and Dependencies
+    # 3rd Party
+    "tailwind",
+    # OMAP
+    "omap.frontend",
+    "omap.core",
+    "omap.assets",
 ]
 
 MIDDLEWARE = [
@@ -52,7 +59,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-ROOT_URLCONF = "omap.modules.module_urls"
+ROOT_URLCONF = "omap_site.urls"
 
 TEMPLATES = [
     {
@@ -69,8 +76,8 @@ TEMPLATES = [
         },
     },
 ]
-WSGI_APPLICATION = "omap.modules.wsgi.application"
-ASGI_APPLICATION = "omap.modules.wsgi.application"
+WSGI_APPLICATION = "omap_site.wsgi.application"
+ASGI_APPLICATION = "omap_site.asgi.application"
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -113,3 +120,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+# Needed by Tailwind Plugin
+TAILWIND_APP_NAME = "omap/frontend"

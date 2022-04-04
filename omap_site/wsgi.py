@@ -10,7 +10,9 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
+from omap.modules import modules
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "omap.modules.base_settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "omap_site.settings")
+modules.configure_modules()
 
 application = get_wsgi_application()
