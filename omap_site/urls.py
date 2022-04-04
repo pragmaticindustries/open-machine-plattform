@@ -3,14 +3,15 @@ import logging
 
 from django.apps import apps
 from django.conf import settings
-from django.conf.urls import url, include
+from django.urls import path, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+
+from omap.core import urls as core_urls
 
 
 def dynamic_url():
-    _urlpatterns = [url(r"admin/", admin.site.urls)] + (
+    _urlpatterns = [path("", include(core_urls)), path(r"admin/", admin.site.urls)] + (
         static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
         if settings.MEDIA_ROOT
         else []

@@ -12,7 +12,7 @@ import os
 from django.core.asgi import get_asgi_application
 from omap.modules import modules
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "omap.modules.base_settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "omap_site.settings")
 modules.configure_modules()
 
 application = get_asgi_application()
