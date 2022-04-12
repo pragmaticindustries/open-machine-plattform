@@ -1,70 +1,96 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full w-full">
 	<head>
         <title>{% block title %}Open Machinery Platform{% endblock %}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        {% block head %}head{% endblock %}
         {% tailwind_css %}
+
+        <!-- this is just for avoiding the error because of the favicon.ico file -->
+        <link rel="icon" href="https://pragmaticindustries.com/wp-content/uploads/2021/09/cropped-pi-signet-2-1-32x32.png" sizes="32x32">
 	</head>
 
-    <nav>
-    <div>asdf</div>
-        {% block navigation %}
-            navigation
-            <nav>{% block nav_group %}nav_group{% endblock nav_group %}
-                <nav>{% block nav_element %}nav_element{% endblock nav_element %}</nav>
-            </nav>
-        {% endblock navigation %}
-    </nav>
+	<body class="bg-gray-50 font-serif leading-normal tracking-normal h-full w-full">
+        <nav class="grid grid-cols-2 h-24 w-full fixed">
+            {% block navigation %}
+                <nav class="justify-start bg-gray-200">{% block nav_left %}nav_left{% endblock nav_left %}</nav>
+                <nav class="justify-end bg-gray-200 text-right">{% block nav_right %}nav_right{% endblock nav_right %}</nav>
+            {% endblock navigation %}
+        </nav>
 
-    <nav>
-        {% block subnavigation %}
-            subnavigation
-            <nav>
-                {% block subnav_left %}subnav_left{% endblock subnav_left %}
-                {% block subnav_center %}subnav_center{% endblock subnav_center %}
-                {% block subnav_right %}subnav_right{% endblock subnav_right %}
-            </nav>
-        {% endblock subnavigation %}
-    </nav>
-
-    <aside>
-        {% block sidebar %}
-            sidebar
-            <div>
-                {% block sidebar_head %}
-                    sidebar_head
-                    <div>
-                        {% block sidebar_element %}
-                            sidebar_element
-                        {% endblock sidebar_element %}
-                    </div>
-                {% endblock sidebar_head %}
-            </div>
-            <div>
-                {% block sidebar_body %}
-                    sidebar_body
+        <!-- sidebar left -->
+        <aside class="flex w-96 h-full flex-col fixed inset-y-0 border border-solid pt-24">
+            {% block sidebar_left %}
+                sidebar_left
                 <div>
-                    {% block sidebar_filter_form %}
-                        sidebar_filter_form
-                    {% endblock sidebar_filter_form %}
+                    {% block sidebar_head_left %}
+                        sidebar_head_left
+                    {% endblock sidebar_head_left %}
                 </div>
                 <div>
-                    {% block sidebar_filter_content %}
-                        sidebar_filter_content
-                    {% endblock sidebar_filter_content %}
+                    {% block sidebar_filter_content_left %}
+                        sidebar_filter_content_left
+                    {% endblock sidebar_filter_content_left %}
                 </div>
-                {% endblock sidebar_body %}
-            </div>
-        {% endblock sidebar %}
-    </aside>
+            {% endblock sidebar_left %}
+        </aside>
 
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
-        {% block body %}
-            body
-        {% endblock %}
+        <!-- content -->
+        <main class="pl-96 pr-96 pt-24 flex flex-1 flex-col bg-green-300 h-full text-center align-center">
+            <h1>
+                {% block content_title %}
+                    content_title
+                {% endblock content_title %}
+            </h1>
+            <div>
+                {% block content_head %}
+                    content_head
+                {% endblock content_head %}
+            </div>
+
+            <h1>
+                {% block content_action %}
+                    content_action
+                {% endblock content_action %}
+            </h1>
+
+            <!-- content_middle -->
+            <div class="text-center grid grid-cols-3 border border-solid">
+                {% block content_middle %}
+                    <div>content_middle</div>
+                    <div>content_middle</div>
+                    <div>content_middle</div>
+                    <div>content_middle</div>
+                    <div>content_middle</div>
+                    <div>content_middle</div>
+                {% endblock content_middle %}
+            </div>
+
+            <!-- widget_list -->
+            <div class="justify-bottom">
+                {% block widget_list %}
+                    widget_list
+                {% endblock widget_list %}
+            </div>
+        </main>
+
+        <!-- sidebar right -->
+        <aside class="flex w-96 h-full flex-col fixed inset-y-0 border border-solid pt-24 right-0">
+            {% block sidebar_right %}
+                sidebar_right
+                <div>
+                    {% block sidebar_head_right %}
+                        sidebar_head_right
+                    {% endblock sidebar_head_right %}
+                </div>
+                <div>
+                    {% block sidebar_filter_content_right %}
+                        sidebar_filter_content_right
+                    {% endblock sidebar_filter_content_right %}
+                </div>
+            {% endblock sidebar_right %}
+        </aside>
 	</body>
 </html>

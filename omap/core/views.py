@@ -2,8 +2,8 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 
 
-def demo(request):
-    return HttpResponse('<div class="text-5xl">Hallo</div>')
+class DemoView(TemplateView):
+    template_name = "omap/frontend/root.html"
 
 
 class TailwindDemoView(TemplateView):
