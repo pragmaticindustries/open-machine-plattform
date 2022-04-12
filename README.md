@@ -29,6 +29,18 @@ So migrations can e.g. be done via
 ```
 etc...
 
+## Build Tailwind
+
+To build tailwind statically, you have to navigate to the root folder and then run the following commands in the terminal
+
+```
+make install
+make frontend
+make dev_server
+```
+
+The last command is optional. It starts a development server that automatically generates the updated styles.css whenever there were changes to the template files applied.
+
 ## Run Docker
 
 To run the application in docker, run the following:
