@@ -2,16 +2,69 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-        <title>{% block title %}Open Machinery Plattform{% endblock %}</title>
+        <title>{% block title %}Open Machinery Platform{% endblock %}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        {% block head %}{% endblock %}
+        {% block head %}head{% endblock %}
         {% tailwind_css %}
 	</head>
 
+    <nav>
+    <div>asdf</div>
+        {% block navigation %}
+            navigation
+            <nav>{% block nav_group %}nav_group{% endblock nav_group %}
+                <nav>{% block nav_element %}nav_element{% endblock nav_element %}</nav>
+            </nav>
+        {% endblock navigation %}
+    </nav>
+
+    <nav>
+        {% block subnavigation %}
+            subnavigation
+            <nav>
+                {% block subnav_left %}subnav_left{% endblock subnav_left %}
+                {% block subnav_center %}subnav_center{% endblock subnav_center %}
+                {% block subnav_right %}subnav_right{% endblock subnav_right %}
+            </nav>
+        {% endblock subnavigation %}
+    </nav>
+
+    <aside>
+        {% block sidebar %}
+            sidebar
+            <div>
+                {% block sidebar_head %}
+                    sidebar_head
+                    <div>
+                        {% block sidebar_element %}
+                            sidebar_element
+                        {% endblock sidebar_element %}
+                    </div>
+                {% endblock sidebar_head %}
+            </div>
+            <div>
+                {% block sidebar_body %}
+                    sidebar_body
+                <div>
+                    {% block sidebar_filter_form %}
+                        sidebar_filter_form
+                    {% endblock sidebar_filter_form %}
+                </div>
+                <div>
+                    {% block sidebar_filter_content %}
+                        sidebar_filter_content
+                    {% endblock sidebar_filter_content %}
+                </div>
+                {% endblock sidebar_body %}
+            </div>
+        {% endblock sidebar %}
+    </aside>
+
 	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
         {% block body %}
+            body
         {% endblock %}
 	</body>
 </html>
