@@ -1,0 +1,36 @@
+{% load static tailwind_tags %}
+<!doctype html>
+<html lang="de" class="w-full h-full">
+<head>
+    <title>Dashboard PI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% tailwind_css %}
+
+    <!-- this is just for avoiding the error because of the favicon.ico file -->
+    <link rel="icon" href="https://pragmaticindustries.com/wp-content/uploads/2021/09/cropped-pi-signet-2-1-32x32.png" sizes="32x32">
+</head>
+
+<body class="w-full h-full overflow-y-auto">
+    <!-- navigation bar -->
+    <nav class="grid grid-cols-2 h-24 w-full fixed">
+        {% block navigation %}
+            <nav class="justify-start bg-gray-200 grid content-center text-3xl pl-4">{% block nav_left %}nav_left{% endblock nav_left %}</nav>
+            <nav class="justify-end bg-gray-200 text-right grid content-center text-3xl pr-4">{% block nav_right %}nav_right{% endblock nav_right %}</nav>
+        {% endblock navigation %}
+    </nav>
+
+    <main class="pt-24">
+        <div class="h-80 bg-blue-100 border border-solid z-0"></div>
+
+        <!-- this is overflowing the background -->
+        <div class="px-72 xl:px-96 h-64 inset-y-72 inset-x-72 xl:inset-x-96 grid grid-cols-1 xl:grid-cols-3 border border-solid hover:bg-green-300 z-10 fixed">
+            {% block widgets %}
+            {% endblock widgets %}
+        </div>
+
+        <div class="h-64 bg-blue-200 border border-solid z-0"></div>
+    </main>
+</body>
+</html>

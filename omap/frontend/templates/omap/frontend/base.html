@@ -13,6 +13,7 @@
 	</head>
 
 	<body class="bg-gray-50 font-serif leading-normal tracking-normal h-full w-full">
+        <!-- navigation bar -->
         <nav class="grid grid-cols-2 h-24 w-full fixed">
             {% block navigation %}
                 <nav class="justify-start bg-gray-200 grid content-center text-3xl pl-4">{% block nav_left %}nav_left{% endblock nav_left %}</nav>
@@ -44,6 +45,7 @@
                     content_title
                 {% endblock content_title %}
             </h1>
+
             <div class="text-center grid grid-cols-1 xl:grid-cols-3 border border-solid p-4 gap-4">
                 {% block content_head %}
                     <div>content_head</div>
