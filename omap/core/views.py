@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 
 
 class DemoView(TemplateView):
-    template_name = "omap/frontend/root.html"
+    template_name = "omap/frontend/base.html"
 
 
 class TailwindDemoView(TemplateView):

@@ -15,13 +15,13 @@
 	<body class="bg-gray-50 font-serif leading-normal tracking-normal h-full w-full">
         <nav class="grid grid-cols-2 h-24 w-full fixed">
             {% block navigation %}
-                <nav class="justify-start bg-gray-200">{% block nav_left %}nav_left{% endblock nav_left %}</nav>
-                <nav class="justify-end bg-gray-200 text-right">{% block nav_right %}nav_right{% endblock nav_right %}</nav>
+                <nav class="justify-start bg-gray-200 grid content-center text-3xl pl-4">{% block nav_left %}nav_left{% endblock nav_left %}</nav>
+                <nav class="justify-end bg-gray-200 text-right grid content-center text-3xl pr-4">{% block nav_right %}nav_right{% endblock nav_right %}</nav>
             {% endblock navigation %}
         </nav>
 
         <!-- sidebar left -->
-        <aside class="flex w-96 h-full flex-col fixed inset-y-0 border border-solid pt-24">
+        <aside class="flex w-72 xl:w-96 h-full flex-col fixed inset-y-0 border border-solid pt-24 px-4 gap-2">
             {% block sidebar_left %}
                 sidebar_left
                 <div>
@@ -38,26 +38,28 @@
         </aside>
 
         <!-- content -->
-        <main class="pl-96 pr-96 pt-24 flex flex-1 flex-col bg-green-300 h-full text-center align-center">
-            <h1>
+        <main class="px-72 xl:px-96 pt-24 flex flex-1 flex-col bg-green-300 h-full text-center align-center">
+            <h1 class="text-2xl p-4">
                 {% block content_title %}
                     content_title
                 {% endblock content_title %}
             </h1>
-            <div>
+            <div class="text-center grid grid-cols-1 xl:grid-cols-3 border border-solid p-4 gap-4">
                 {% block content_head %}
-                    content_head
+                    <div>content_head</div>
+                    <div>content_head</div>
+                    <div>content_head</div>
                 {% endblock content_head %}
             </div>
 
-            <h1>
+            <h1 class="text-2xl p-4">
                 {% block content_action %}
                     content_action
                 {% endblock content_action %}
             </h1>
 
             <!-- content_middle -->
-            <div class="text-center grid grid-cols-3 border border-solid">
+            <div class="text-center grid grid-cols-1 xl:grid-cols-3 border border-solid p-4 gap-4">
                 {% block content_middle %}
                     <div>content_middle</div>
                     <div>content_middle</div>
@@ -69,7 +71,7 @@
             </div>
 
             <!-- widget_list -->
-            <div class="justify-bottom">
+            <div class="grid content-end h-full pb-4">
                 {% block widget_list %}
                     widget_list
                 {% endblock widget_list %}
@@ -77,7 +79,7 @@
         </main>
 
         <!-- sidebar right -->
-        <aside class="flex w-96 h-full flex-col fixed inset-y-0 border border-solid pt-24 right-0">
+        <aside class="flex w-72 xl:w-96 h-full flex-col fixed inset-y-0 border border-solid pt-24 right-0 text-right px-4 gap-2">
             {% block sidebar_right %}
                 sidebar_right
                 <div>
