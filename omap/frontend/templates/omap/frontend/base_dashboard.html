@@ -28,11 +28,11 @@
         </div>
 
         <!-- this is overflowing the background -->
-        <div class="h-64 mx-96 -mt-80 grid grid-cols-1 xl:grid-cols-3 border border-solid static z-10">
+        <div class="min-h-min mx-96 -mt-96 grid grid-cols-1 xl:grid-cols-3 border border-solid static z-10">
             {% block widgets %}
-                <div class="min-w-min p-4 text-center">Dies ist ein langer Text</div>
-                <div class="min-w-min p-4 text-center">Dies ist ein langer Text</div>
-                <div class="min-w-min p-4 text-center">Dies ist ein langer Text</div>
+                <div class="min-w-min p-4 text-center hover:uppercase grid justify-items-center">{% include "omap/frontend/base_item.html" %}</div>
+                <div class="min-w-min p-4 text-center hover:uppercase grid justify-items-center">{% include "omap/frontend/base_item.html" %}</div>
+                <div class="min-w-min p-4 text-center hover:uppercase grid justify-items-center">{% include "omap/frontend/base_item.html" %}</div>
             {% endblock widgets %}
         </div>
 
@@ -41,12 +41,14 @@
                 Aktuelle Aufgaben
             {% endblock aktuelle_aufgaben %}
         </h3>
-        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x mt-4">
+        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 divide-x mt-4">
             {% block aktuelle_aufgaben_content %}
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
             {% endblock aktuelle_aufgaben_content %}
         </div>
 
@@ -55,12 +57,12 @@
                 Aktueller Maschinenstatus
             {% endblock aktueller_maschinenstatus %}
         </h3>
-        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x mt-4">
+        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 divide-x mt-4">
             {% block aktueller_maschinenstatus_content %}
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
             {% endblock aktueller_maschinenstatus_content %}
         </div>
 
@@ -69,12 +71,12 @@
                 Aktuelle Impressionen
             {% endblock aktuelle_impressionen %}
         </h3>
-        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x mt-4">
+        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 divide-x mt-4">
             {% block aktuelle_impressionen_content %}
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
-                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
+                <div class="min-w-min p-4 grid"><div class="h-96 text-2xl p-4 justify-items-center">{% include "omap/frontend/base_item.html" %}</div></div>
             {% endblock aktuelle_impressionen_content %}
         </div>
     </main>
