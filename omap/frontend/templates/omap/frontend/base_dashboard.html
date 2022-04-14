@@ -22,55 +22,59 @@
     </nav>
 
     <main class="pt-24">
-        <div class="h-80 bg-blue-100 border border-solid"></div>
+        <div class="static">
+            <div class="h-80 bg-blue-100 border border-solid z-0"></div>
+            <div class="h-48 bg-gradient-to-r from-blue-200 to-cyan-200 border border-solid z-0"></div>
+        </div>
 
         <!-- this is overflowing the background -->
-        <div class="h-64 inset-y-72 inset-x-96 grid grid-cols-1 xl:grid-cols-3 border border-solid z-10 fixed">
+        <div class="h-64 mx-96 -mt-80 grid grid-cols-1 xl:grid-cols-3 border border-solid static z-10">
             {% block widgets %}
+                <div class="min-w-min p-4 text-center">Dies ist ein langer Text</div>
+                <div class="min-w-min p-4 text-center">Dies ist ein langer Text</div>
+                <div class="min-w-min p-4 text-center">Dies ist ein langer Text</div>
             {% endblock widgets %}
         </div>
 
-        <div class="h-48 bg-blue-200 border border-solid"></div>
-
-        <h3 class="text-3xl text-gray-400 pt-48 px-96">
+        <h3 class="text-3xl text-gray-400 px-96 pt-48">
             {% block aktuelle_aufgaben %}
                 Aktuelle Aufgaben
             {% endblock aktuelle_aufgaben %}
         </h3>
-        <div class="h-min-min inset-x-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x fixed mt-4">
+        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x mt-4">
             {% block aktuelle_aufgaben_content %}
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
             {% endblock aktuelle_aufgaben_content %}
         </div>
 
-        <h3 class="text-3xl text-gray-400 px-96 pt-96">
+        <h3 class="text-3xl text-gray-400 px-96 pt-24">
             {% block aktueller_maschinenstatus %}
                 Aktueller Maschinenstatus
             {% endblock aktueller_maschinenstatus %}
         </h3>
-        <div class="h-min-min inset-x-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x fixed mt-4">
+        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x mt-4">
             {% block aktueller_maschinenstatus_content %}
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
             {% endblock aktueller_maschinenstatus_content %}
         </div>
 
-        <h3 class="text-3xl text-gray-400 px-96 pt-96">
+        <h3 class="text-3xl text-gray-400 px-96 pt-24">
             {% block aktuelle_impressionen %}
                 Aktuelle Impressionen
             {% endblock aktuelle_impressionen %}
         </h3>
-        <div class="h-min-min inset-x-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x fixed mt-4">
+        <div class="min-h-min mx-48 grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 divide-x mt-4">
             {% block aktuelle_impressionen_content %}
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
-                <div class="text-center w-min-min"><div class="h-80 text-2xl">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
+                <div class="text-center min-w-min"><div class="h-96 text-2xl p-4">Testinhalt</div></div>
             {% endblock aktuelle_impressionen_content %}
         </div>
     </main>
