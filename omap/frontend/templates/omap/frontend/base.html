@@ -14,25 +14,25 @@
 
 	<body class="bg-gray-50 font-serif leading-normal tracking-normal h-full w-full">
         <!-- navigation bar -->
-        <nav class="grid grid-cols-2 h-24 w-full fixed">
+        <nav class="grid grid-cols-2 h-24 w-full fixed z-50">
             {% block navigation %}
-                <nav class="justify-start bg-gray-200 grid content-center text-3xl pl-4">{% block nav_left %}nav_left{% endblock nav_left %}</nav>
-                <nav class="justify-end bg-gray-200 text-right grid content-center text-3xl pr-4">{% block nav_right %}nav_right{% endblock nav_right %}</nav>
+                <nav class="justify-start bg-gray-200 grid content-center text-3xl pl-4">{% block nav_left %}{% if display_hints %}nav_left{% endif %}{% endblock nav_left %}</nav>
+                <nav class="justify-end bg-gray-200 text-right grid content-center text-3xl pr-4">{% block nav_right %}{% if display_hints %}nav_right{% endif %}{% endblock nav_right %}</nav>
             {% endblock navigation %}
         </nav>
 
         <!-- sidebar left -->
         <aside class="flex w-72 xl:w-96 h-full flex-col fixed inset-y-0 border border-solid pt-24 px-4 gap-2">
             {% block sidebar_left %}
-                sidebar_left
+                {% if display_hints %}sidebar_left{% endif %}
                 <div>
                     {% block sidebar_head_left %}
-                        sidebar_head_left
+                        {% if display_hints %}sidebar_head_left{% endif %}
                     {% endblock sidebar_head_left %}
                 </div>
                 <div>
                     {% block sidebar_filter_content_left %}
-                        sidebar_filter_content_left
+                        {% if display_hints %}sidebar_filter_content_left{% endif %}
                     {% endblock sidebar_filter_content_left %}
                 </div>
             {% endblock sidebar_left %}
@@ -42,7 +42,7 @@
         <main class="px-72 xl:px-96 pt-24 flex flex-1 flex-col bg-green-300 h-full text-center align-center">
             <h1 class="text-2xl p-4">
                 {% block content_title %}
-                    content_title
+                    {% if display_hints %}content_title{% endif %}
                 {% endblock content_title %}
             </h1>
 
@@ -56,7 +56,7 @@
 
             <h1 class="text-2xl p-4">
                 {% block content_action %}
-                    content_action
+                    {% if display_hints %}content_action{% endif %}
                 {% endblock content_action %}
             </h1>
 
@@ -75,7 +75,7 @@
             <!-- widget_list -->
             <div class="grid content-end h-full pb-4">
                 {% block widget_list %}
-                    widget_list
+                    {% if display_hints %}widget_list{% endif %}
                 {% endblock widget_list %}
             </div>
         </main>
@@ -83,18 +83,19 @@
         <!-- sidebar right -->
         <aside class="flex w-72 xl:w-96 h-full flex-col fixed inset-y-0 border border-solid pt-24 right-0 text-right px-4 gap-2">
             {% block sidebar_right %}
-                sidebar_right
+                {% if display_hints %}sidebar_right{% endif %}
                 <div>
                     {% block sidebar_head_right %}
-                        sidebar_head_right
+                        {% if display_hints %}sidebar_head_right{% endif %}
                     {% endblock sidebar_head_right %}
                 </div>
                 <div>
                     {% block sidebar_filter_content_right %}
-                        sidebar_filter_content_right
+                        {% if display_hints %}sidebar_filter_content_right{% endif %}
                     {% endblock sidebar_filter_content_right %}
                 </div>
             {% endblock sidebar_right %}
         </aside>
 	</body>
 </html>
+
